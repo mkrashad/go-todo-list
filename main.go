@@ -1,26 +1,23 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"main_module/controllers"
+	initilalizers "main_module/initializers"
+
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
-type Todos struct {
-	gorm.Model //embeded GORM struct
-	name       string
-	completed  bool
+func init() {
+	initilalizers.LoadEnvVariables()
+	initilalizers.ConnectToDB()
 }
 
-
-
 func main() {
-	dsn := "host=localhost user=rashad password=1234 dbname=todo port=5432 sslmode=disable TimeZone=Asia/Shanghai"
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatal("Failed to connect to database")
-	}
-
+	r := gin.Default()
+	r.POST("/tasks", controllers.AddTask)
+	r.PUT("/tasks/:id", controllers.UpdateTask)
+	r.GET("/tasks", controllers.GetAllTasks)
+	r.GET("/task/:id", controllers.GetSingleTask)
+	r.DELETE("/tasks/:id", controllers.DeleteTask)
+	r.Run()
 }

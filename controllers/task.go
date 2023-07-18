@@ -30,7 +30,7 @@ func AddTask(c *gin.Context) {
 	}
 
 	c.JSON(200, gin.H{
-		"task": task,
+		"tasks": task,
 	})
 
 }
@@ -84,7 +84,7 @@ func UpdateTask(c *gin.Context) {
 
 	c.Bind(&body)
 
-	// Find the post were updating
+	// Find the tasks were updating
 	var task []models.Task
 
 	result := initilalizers.DB.Find(&task, id)
@@ -117,5 +117,7 @@ func DeleteTask(c *gin.Context) {
 		})
 	}
 	// Respond
-	c.Status(200)
+	c.JSON(200, gin.H{
+		"Message": "Task was successfully deleted",
+	})
 }

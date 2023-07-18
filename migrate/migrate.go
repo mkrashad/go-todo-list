@@ -12,6 +12,6 @@ func init() {
 }
 
 func main() {
-	initilalizers.DB.AutoMigrate(&models.Task{})
+	initilalizers.DB.AutoMigrate(&models.Task{}, &models.User{})
 	fmt.Println("Database migrated succesfully")
 }

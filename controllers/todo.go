@@ -96,7 +96,7 @@ func UpdateTask(c *gin.Context) {
 	}
 
 	// Update it
-	initilalizers.DB.Model(&task).Updates(models.Task{Name: body.Name, Completed: body.Completed})
+	initilalizers.DB.Model(&task).Updates(map[string]interface{}{"Name": body.Name, "Completed": body.Completed})
 
 	// Respond with json
 	c.JSON(200, gin.H{

@@ -17,7 +17,7 @@ func main() {
 	r.POST("/tasks", controllers.AddTask)
 	r.PUT("/tasks/:id", controllers.UpdateTask)
 	r.GET("/tasks", controllers.GetAllTasks)
-	r.GET("/task/:id", controllers.GetSingleTask)
+	r.GET("/tasks/:id", controllers.GetSingleTask)
 	r.DELETE("/tasks/:id", controllers.DeleteTask)
 	r.Run()
 }

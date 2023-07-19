@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func AddUser(c *gin.Context) {
+func CreateUser(c *gin.Context) {
 	// Get data from req body
 	var body struct {
 		FirstName string

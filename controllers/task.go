@@ -1,17 +1,19 @@
 package controllers
 
 import (
+	"fmt"
 	initilalizers "main_module/initializers"
 	"main_module/models"
 
 	"github.com/gin-gonic/gin"
 )
 
-func AddTask(c *gin.Context) {
+func CreateTask(c *gin.Context) {
 	// Get data from req body
 	var body struct {
 		Name      string
 		Completed bool
+		UserID    uint
 	}
 	c.Bind(&body)
 
@@ -19,7 +21,10 @@ func AddTask(c *gin.Context) {
 	task := models.Task{
 		Name:      body.Name,
 		Completed: body.Completed,
+		UserID:    body.UserID,
 	}
+
+	fmt.Println(task)
 
 	result := initilalizers.DB.Create(&task)
 
@@ -80,6 +85,7 @@ func UpdateTask(c *gin.Context) {
 	var body struct {
 		Name      string
 		Completed bool
+		UserID    uint
 	}
 
 	c.Bind(&body)
@@ -96,7 +102,7 @@ func UpdateTask(c *gin.Context) {
 	}
 
 	// Update it
-	initilalizers.DB.Model(&task).Updates(map[string]interface{}{"Name": body.Name, "Completed": body.Completed})
+	initilalizers.DB.Model(&task).Updates(map[string]interface{}{"Name": body.Name, "Completed": body.Completed, "UserID": body.UserID})
 
 	// Respond with json
 	c.JSON(200, gin.H{

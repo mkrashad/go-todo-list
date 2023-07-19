@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"fmt"
-	initilalizers "main_module/initializers"
+	initilalizers "main_module/db"
 	"main_module/models"
 
 	"github.com/gin-gonic/gin"

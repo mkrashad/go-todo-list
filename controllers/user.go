@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	initilalizers "main_module/initializers"
+	initilalizers "main_module/db"
 	"main_module/models"
 
 	"github.com/gin-gonic/gin"

@@ -54,7 +54,7 @@ func GetAllUsers(c *gin.Context) {
 	})
 }
 
-func GetSingleUser(c *gin.Context) {
+func GetUserById(c *gin.Context) {
 	// Get id from request
 	id := c.Param("id")
 

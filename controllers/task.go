@@ -57,7 +57,7 @@ func GetAllTasks(c *gin.Context) {
 	})
 }
 
-func GetSingleTask(c *gin.Context) {
+func GetTaskById(c *gin.Context) {
 	// Get id from request
 	id := c.Param("id")
 

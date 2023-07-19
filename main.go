@@ -1,10 +1,8 @@
 package main
 
 import (
-	"main_module/controllers"
+	"main_module/api"
 	initilalizers "main_module/initializers"
-
-	"github.com/gin-gonic/gin"
 )
 
 func init() {
@@ -13,19 +11,5 @@ func init() {
 }
 
 func main() {
-	r := gin.Default()
-	// Tasks
-	r.POST("/tasks", controllers.CreateTask)
-	r.PUT("/tasks/:id", controllers.UpdateTask)
-	r.GET("/tasks", controllers.GetAllTasks)
-	r.GET("/tasks/:id", controllers.GetSingleTask)
-	r.DELETE("/tasks/:id", controllers.DeleteTask)
-
-	// Users
-	r.POST("/users", controllers.CreateUser)
-	r.PUT("/users/:id", controllers.UpdateUser)
-	r.GET("/users", controllers.GetAllUsers)
-	r.GET("/users/:id", controllers.GetSingleUser)
-	r.DELETE("/users/:id", controllers.DeleteUser)
-	r.Run()
+	api.Router()
 }
